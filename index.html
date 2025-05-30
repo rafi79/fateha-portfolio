@@ -1,0 +1,791 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fateha Jannat Ayrin - Portfolio</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #000;
+            color: #fff;
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header Styles */
+        header {
+            background: linear-gradient(135deg, #000 0%, #333 100%);
+            padding: 80px 0;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        header::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: repeating-linear-gradient(
+                45deg,
+                transparent,
+                transparent 1px,
+                rgba(255,255,255,0.03) 1px,
+                rgba(255,255,255,0.03) 20px
+            );
+            animation: float 20s linear infinite;
+        }
+
+        @keyframes float {
+            0% { transform: translateX(-100px) translateY(-100px); }
+            100% { transform: translateX(100px) translateY(100px); }
+        }
+
+        .profile-section {
+            position: relative;
+            z-index: 2;
+        }
+
+        .profile-image {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            border: 4px solid #fff;
+            margin: 0 auto 30px;
+            background: #333;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 60px;
+            font-weight: bold;
+            box-shadow: 0 0 30px rgba(255,255,255,0.3);
+        }
+
+        h1 {
+            font-size: 3rem;
+            margin-bottom: 10px;
+            background: linear-gradient(45deg, #fff, #ccc);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .subtitle {
+            font-size: 1.3rem;
+            color: #ccc;
+            margin-bottom: 30px;
+        }
+
+        .contact-info {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            flex-wrap: wrap;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 0.9rem;
+            color: #ddd;
+        }
+
+        /* Navigation */
+        nav {
+            background: #111;
+            padding: 20px 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 2px 20px rgba(0,0,0,0.5);
+        }
+
+        .nav-container {
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+            flex-wrap: wrap;
+        }
+
+        .nav-link {
+            color: #fff;
+            text-decoration: none;
+            padding: 10px 20px;
+            border-radius: 25px;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .nav-link::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+            transition: left 0.5s;
+        }
+
+        .nav-link:hover::before {
+            left: 100%;
+        }
+
+        .nav-link:hover {
+            background: #333;
+            transform: translateY(-2px);
+        }
+
+        /* Section Styles */
+        section {
+            padding: 80px 0;
+            border-bottom: 1px solid #333;
+        }
+
+        section:nth-child(even) {
+            background: #111;
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+            text-align: center;
+            margin-bottom: 50px;
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 3px;
+            background: linear-gradient(90deg, #fff, #666);
+        }
+
+        /* Summary */
+        .summary-content {
+            font-size: 1.1rem;
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto;
+            color: #ddd;
+            line-height: 1.8;
+        }
+
+        /* Experience */
+        .experience-item {
+            background: #222;
+            padding: 30px;
+            border-radius: 15px;
+            margin-bottom: 30px;
+            position: relative;
+            overflow: hidden;
+            transition: transform 0.3s ease;
+        }
+
+        .experience-item::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 5px;
+            height: 100%;
+            background: linear-gradient(180deg, #fff, #666);
+        }
+
+        .experience-item:hover {
+            transform: translateY(-5px);
+        }
+
+        .experience-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 15px;
+            flex-wrap: wrap;
+        }
+
+        .experience-title {
+            font-size: 1.3rem;
+            font-weight: bold;
+        }
+
+        .experience-date {
+            color: #ccc;
+            font-size: 0.9rem;
+        }
+
+        .experience-company {
+            color: #aaa;
+            margin-bottom: 15px;
+        }
+
+        .experience-description {
+            color: #ddd;
+        }
+
+        .experience-description ul {
+            margin-left: 20px;
+        }
+
+        .experience-description li {
+            margin-bottom: 8px;
+        }
+
+        /* Skills */
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+        }
+
+        .skill-category {
+            background: #222;
+            padding: 25px;
+            border-radius: 15px;
+            text-align: center;
+            transition: transform 0.3s ease;
+        }
+
+        .skill-category:hover {
+            transform: translateY(-5px);
+        }
+
+        .skill-category h3 {
+            margin-bottom: 15px;
+            font-size: 1.2rem;
+        }
+
+        .skill-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            justify-content: center;
+        }
+
+        .skill-tag {
+            background: #333;
+            padding: 5px 12px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            color: #ddd;
+        }
+
+        /* Education */
+        .education-item {
+            background: #222;
+            padding: 25px;
+            border-radius: 15px;
+            margin-bottom: 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        .education-content h3 {
+            font-size: 1.2rem;
+            margin-bottom: 5px;
+        }
+
+        .education-content p {
+            color: #ccc;
+            font-size: 0.9rem;
+        }
+
+        .education-grade {
+            text-align: right;
+            color: #ddd;
+        }
+
+        /* Research & Projects */
+        .research-grid, .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 30px;
+        }
+
+        .research-item, .project-item {
+            background: #222;
+            padding: 25px;
+            border-radius: 15px;
+            transition: transform 0.3s ease;
+        }
+
+        .research-item:hover, .project-item:hover {
+            transform: translateY(-5px);
+        }
+
+        .research-item h3, .project-item h3 {
+            margin-bottom: 15px;
+            font-size: 1.1rem;
+            color: #fff;
+        }
+
+        .research-item p, .project-item p {
+            color: #ddd;
+            font-size: 0.9rem;
+            margin-bottom: 10px;
+        }
+
+        .tech-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-top: 15px;
+        }
+
+        .tech-tag {
+            background: #444;
+            padding: 3px 8px;
+            border-radius: 12px;
+            font-size: 0.7rem;
+            color: #ccc;
+        }
+
+        /* Footer */
+        footer {
+            background: #000;
+            padding: 40px 0;
+            text-align: center;
+            border-top: 1px solid #333;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2rem;
+            }
+
+            .contact-info {
+                flex-direction: column;
+                align-items: center;
+                gap: 15px;
+            }
+
+            .nav-container {
+                gap: 20px;
+            }
+
+            .experience-header {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .education-item {
+                flex-direction: column;
+                align-items: flex-start;
+                text-align: left;
+            }
+
+            .education-grade {
+                text-align: left;
+                margin-top: 10px;
+            }
+        }
+
+        /* Scroll animations */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.6s ease;
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="profile-section">
+                <div class="profile-image">FA</div>
+                <h1>Fateha Jannat Ayrin</h1>
+                <p class="subtitle">Educator & AI Researcher</p>
+                <div class="contact-info">
+                    <div class="contact-item">
+                        <span>📧</span>
+                        <span>fjayrin@gmail.com</span>
+                    </div>
+                    <div class="contact-item">
+                        <span>📱</span>
+                        <span>+880 16 162 47349</span>
+                    </div>
+                    <div class="contact-item">
+                        <span>📍</span>
+                        <span>Chittagong, Bangladesh</span>
+                    </div>
+                    <div class="contact-item">
+                        <span>💼</span>
+                        <span>ayrin21</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <nav>
+        <div class="container">
+            <div class="nav-container">
+                <a href="#summary" class="nav-link">Summary</a>
+                <a href="#experience" class="nav-link">Experience</a>
+                <a href="#education" class="nav-link">Education</a>
+                <a href="#skills" class="nav-link">Skills</a>
+                <a href="#research" class="nav-link">Research</a>
+                <a href="#projects" class="nav-link">Projects</a>
+            </div>
+        </div>
+    </nav>
+
+    <section id="summary">
+        <div class="container">
+            <h2 class="section-title fade-in">Summary</h2>
+            <div class="summary-content fade-in">
+                <p>As an educator and researcher, I am passionate about fostering the academic growth of students and creating an engaging learning environment. I am determined to mentor students, simplify complex concepts, and inspire critical thinking. My goal is to contribute to the academic community through effective teaching, guidance, and continuous learning.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="experience">
+        <div class="container">
+            <h2 class="section-title fade-in">Work Experience</h2>
+            
+            <div class="experience-item fade-in">
+                <div class="experience-header">
+                    <div>
+                        <div class="experience-title">Lecturer - Full Time</div>
+                        <div class="experience-company">Port City International University, Chittagong</div>
+                    </div>
+                    <div class="experience-date">Jan 2025 - Present</div>
+                </div>
+                <div class="experience-description">
+                    <ul>
+                        <li>Conduct undergraduate courses in Digital Logic Design, Database Management Systems, and Operating Systems</li>
+                        <li>Mentor students through academic guidance and project supervision</li>
+                        <li>Actively participate and coordinate various tech fests, seminars, and inter-university competitions</li>
+                        <li>Develop course materials and assessments aligned with outcome-based education (OBE) methodology</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="experience-item fade-in">
+                <div class="experience-header">
+                    <div>
+                        <div class="experience-title">Instructor</div>
+                        <div class="experience-company">BDSKILL (Remote - Part-time)</div>
+                    </div>
+                    <div class="experience-date">May 2025 - June 2025</div>
+                </div>
+                <div class="experience-description">
+                    <p><strong>AI Course:</strong> AI Creation & Automation – From Prompts to Agents For Everyone</p>
+                    <p>Skilled in developing intelligent AI agents and deploying them on MCP servers for scalable, multi-channel inference and automation in real-time systems.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="education">
+        <div class="container">
+            <h2 class="section-title fade-in">Education</h2>
+            
+            <div class="education-item fade-in">
+                <div class="education-content">
+                    <h3>Master of Science (Engineering) in Computer Science & Engineering</h3>
+                    <p>University of Chittagong</p>
+                    <p>Working On OCR Technology With LVM In Final Year Thesis</p>
+                </div>
+                <div class="education-grade">
+                    <strong>CGPA: 3.73/4</strong><br>
+                    <small>1st Semester, Ongoing<br>Session: 2022-2023</small>
+                </div>
+            </div>
+
+            <div class="education-item fade-in">
+                <div class="education-content">
+                    <h3>Bachelor of Science (Engineering) in Computer Science & Engineering</h3>
+                    <p>University of Chittagong</p>
+                </div>
+                <div class="education-grade">
+                    <strong>2019 - 2022</strong>
+                </div>
+            </div>
+
+            <div class="education-item fade-in">
+                <div class="education-content">
+                    <h3>Higher Secondary Certificate</h3>
+                    <p>BMS Girls' High School & College</p>
+                </div>
+                <div class="education-grade">
+                    <strong>GPA: 4.58/5</strong><br>
+                    <small>2016 - 2018</small>
+                </div>
+            </div>
+
+            <div class="education-item fade-in">
+                <div class="education-content">
+                    <h3>Secondary School Certificate</h3>
+                    <p>CMP School & College</p>
+                </div>
+                <div class="education-grade">
+                    <strong>GPA: 5.00/5</strong><br>
+                    <small>2006 - 2016</small>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="skills">
+        <div class="container">
+            <h2 class="section-title fade-in">Skills</h2>
+            <div class="skills-grid">
+                <div class="skill-category fade-in">
+                    <h3>Web Engineering</h3>
+                    <div class="skill-tags">
+                        <span class="skill-tag">HTML</span>
+                        <span class="skill-tag">CSS</span>
+                        <span class="skill-tag">JavaScript</span>
+                        <span class="skill-tag">Bootstrap5</span>
+                        <span class="skill-tag">Node.js</span>
+                    </div>
+                </div>
+                <div class="skill-category fade-in">
+                    <h3>Database</h3>
+                    <div class="skill-tags">
+                        <span class="skill-tag">MySQL</span>
+                        <span class="skill-tag">PostgreSQL</span>
+                        <span class="skill-tag">Oracle Database</span>
+                        <span class="skill-tag">MongoDB</span>
+                    </div>
+                </div>
+                <div class="skill-category fade-in">
+                    <h3>AI & Machine Learning</h3>
+                    <div class="skill-tags">
+                        <span class="skill-tag">ChatGPT</span>
+                        <span class="skill-tag">Claude</span>
+                        <span class="skill-tag">Fine Tuning</span>
+                        <span class="skill-tag">LLMs</span>
+                        <span class="skill-tag">Deep Learning</span>
+                    </div>
+                </div>
+                <div class="skill-category fade-in">
+                    <h3>Tools & Others</h3>
+                    <div class="skill-tags">
+                        <span class="skill-tag">Git</span>
+                        <span class="skill-tag">Trello</span>
+                        <span class="skill-tag">MS Teams</span>
+                        <span class="skill-tag">Canva</span>
+                        <span class="skill-tag">Testing</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="research">
+        <div class="container">
+            <h2 class="section-title fade-in">Research Publications</h2>
+            <div class="research-grid">
+                <div class="research-item fade-in">
+                    <h3>An Optical Character Recognition Technique for Extracting Text from Blurred and Low Quality Images Using TrOCR</h3>
+                    <p>Developed TrOCR system achieving 96.8% accuracy on IIIT 5K dataset. Implemented TrOCR with VisionEncoderDecoder and Seq2Seq framework.</p>
+                    <p><strong>Published:</strong> IEEE ECCE - 2025</p>
+                    <div class="tech-tags">
+                        <span class="tech-tag">TrOCR</span>
+                        <span class="tech-tag">Seq2Seq</span>
+                        <span class="tech-tag">VisionEncoderDecoder</span>
+                    </div>
+                </div>
+
+                <div class="research-item fade-in">
+                    <h3>Fine-Tuning LLMs for Regional Dialect Comprehended Question Answering in Bangla</h3>
+                    <p>Created 12,500-sentence dataset from various Bangla dialects. Achieved 53% BLEU score using ChatGPT-4 and LoRA fine-tuning.</p>
+                    <p><strong>Published:</strong> IEEE SCEECS 2025</p>
+                    <div class="tech-tags">
+                        <span class="tech-tag">LLMs</span>
+                        <span class="tech-tag">ChatGPT</span>
+                        <span class="tech-tag">LoRA</span>
+                    </div>
+                </div>
+
+                <div class="research-item fade-in">
+                    <h3>Fine-Tuning LLMs for Sentiment Classification of AI-Related Tweets</h3>
+                    <p>Analyzed 20,000 tweets using advanced prompt engineering. Implemented successful classification using Llama 2.</p>
+                    <p><strong>Published:</strong> IEEE WIECON-ECE 2024</p>
+                    <div class="tech-tags">
+                        <span class="tech-tag">LLMs</span>
+                        <span class="tech-tag">Llama2</span>
+                        <span class="tech-tag">Prompt Engineering</span>
+                    </div>
+                </div>
+
+                <div class="research-item fade-in">
+                    <h3>Deep Learning Analysis of COVID-19 Lung Infections in CT Scans</h3>
+                    <p>Developed 3D Unet model with 95.56% accuracy. Awarded as best paper.</p>
+                    <p><strong>Published:</strong> IEEE AMATHE 2024</p>
+                    <div class="tech-tags">
+                        <span class="tech-tag">3D UNet</span>
+                        <span class="tech-tag">Deep Learning</span>
+                        <span class="tech-tag">R-CNN</span>
+                    </div>
+                </div>
+
+                <div class="research-item fade-in">
+                    <h3>Towards Accurate Renal Micro-Structure Segmentation</h3>
+                    <p>Achieved 84.55% IoU score using YOLOv8. Applied Mask R-CNN for kidney structure detection.</p>
+                    <p><strong>Published:</strong> IEEE WIECON-ECE 2024</p>
+                    <div class="tech-tags">
+                        <span class="tech-tag">YOLOv8</span>
+                        <span class="tech-tag">Mask R-CNN</span>
+                        <span class="tech-tag">Deep Learning</span>
+                    </div>
+                </div>
+
+                <div class="research-item fade-in">
+                    <h3>Enhancing OCR Post-Processing through Vision-Language Model</h3>
+                    <p>Developed OCR System With VLM Models for Post Processing for Better Accuracy. Implemented 14 VLMs with OCRs for post processing text refinements.</p>
+                    <div class="tech-tags">
+                        <span class="tech-tag">LVMs</span>
+                        <span class="tech-tag">OCR</span>
+                        <span class="tech-tag">Post Processing</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="projects">
+        <div class="container">
+            <h2 class="section-title fade-in">Projects</h2>
+            <div class="projects-grid">
+                <div class="project-item fade-in">
+                    <h3>Job Board Agent</h3>
+                    <p>Developed full-stack application using Node.js and MongoDB. Used Perplexity and Exa search agent model for search functionality.</p>
+                    <div class="tech-tags">
+                        <span class="tech-tag">Node.js</span>
+                        <span class="tech-tag">MongoDB</span>
+                        <span class="tech-tag">Perplexity</span>
+                        <span class="tech-tag">Exa</span>
+                    </div>
+                </div>
+
+                <div class="project-item fade-in">
+                    <h3>Birdly - Bird Trading Platform</h3>
+                    <p>Searching jobs around 10k websites using AI search Agent tool Exa or Perplexity. Used Perplexity and Exa search agent model for search.</p>
+                    <div class="tech-tags">
+                        <span class="tech-tag">AI Agent</span>
+                        <span class="tech-tag">Perplexity</span>
+                        <span class="tech-tag">Exa</span>
+                    </div>
+                </div>
+
+                <div class="project-item fade-in">
+                    <h3>AI Avatar Chatbot</h3>
+                    <p>Built Web app using JavaScript and Node.js with Gemini API. Integrated frontend and backend with HTML, CSS, and JavaScript.</p>
+                    <div class="tech-tags">
+                        <span class="tech-tag">JavaScript</span>
+                        <span class="tech-tag">Node.js</span>
+                        <span class="tech-tag">Gemini API</span>
+                        <span class="tech-tag">HTML/CSS</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 Fateha Jannat Ayrin. All rights reserved.</p>
+            <p>Passionate Educator & AI Researcher</p>
+        </div>
+    </footer>
+
+    <script>
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Scroll animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+
+        // Observe all fade-in elements
+        document.querySelectorAll('.fade-in').forEach(el => {
+            observer.observe(el);
+        });
+
+        // Add some interactive effects
+        document.querySelectorAll('.experience-item, .research-item, .project-item, .skill-category').forEach(item => {
+            item.addEventListener('mouseenter', function() {
+                this.style.boxShadow = '0 10px 30px rgba(255,255,255,0.1)';
+            });
+            
+            item.addEventListener('mouseleave', function() {
+                this.style.boxShadow = 'none';
+            });
+        });
+
+        // Active navigation highlighting
+        window.addEventListener('scroll', () => {
+            const sections = document.querySelectorAll('section');
+            const navLinks = document.querySelectorAll('.nav-link');
+            
+            let current = '';
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                const sectionHeight = section.clientHeight;
+                if (scrollY >= (sectionTop - 200)) {
+                    current = section.getAttribute('id');
+                }
+            });
+
+            navLinks.forEach(link => {
+                link.style.background = '';
+                if (link.getAttribute('href').slice(1) === current) {
+                    link.style.background = '#333';
+                }
+            });
+        });
+    </script>
+</body>
+</html>
