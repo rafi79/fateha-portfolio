@@ -106,6 +106,108 @@
             color: #ddd;
         }
 
+        /* Social Links */
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 25px;
+            margin-top: 40px;
+            flex-wrap: wrap;
+        }
+
+        .social-link {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 8px;
+            padding: 20px;
+            min-width: 120px;
+            background: rgba(255,255,255,0.05);
+            border: 2px solid transparent;
+            border-radius: 20px;
+            color: #fff;
+            text-decoration: none;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            backdrop-filter: blur(10px);
+            position: relative;
+            overflow: hidden;
+        }
+
+        /* Individual social link colors */
+        .social-link:nth-child(1) {
+            background: linear-gradient(135deg, rgba(106, 90, 205, 0.2), rgba(106, 90, 205, 0.1));
+            border-color: rgba(106, 90, 205, 0.3);
+        }
+
+        .social-link:nth-child(1):hover {
+            background: linear-gradient(135deg, rgba(106, 90, 205, 0.4), rgba(106, 90, 205, 0.2));
+            border-color: rgba(106, 90, 205, 0.8);
+            box-shadow: 0 15px 35px rgba(106, 90, 205, 0.3);
+        }
+
+        .social-link:nth-child(2) {
+            background: linear-gradient(135deg, rgba(32, 162, 255, 0.2), rgba(32, 162, 255, 0.1));
+            border-color: rgba(32, 162, 255, 0.3);
+        }
+
+        .social-link:nth-child(2):hover {
+            background: linear-gradient(135deg, rgba(32, 162, 255, 0.4), rgba(32, 162, 255, 0.2));
+            border-color: rgba(32, 162, 255, 0.8);
+            box-shadow: 0 15px 35px rgba(32, 162, 255, 0.3);
+        }
+
+        .social-link:nth-child(3) {
+            background: linear-gradient(135deg, rgba(66, 133, 244, 0.2), rgba(66, 133, 244, 0.1));
+            border-color: rgba(66, 133, 244, 0.3);
+        }
+
+        .social-link:nth-child(3):hover {
+            background: linear-gradient(135deg, rgba(66, 133, 244, 0.4), rgba(66, 133, 244, 0.2));
+            border-color: rgba(66, 133, 244, 0.8);
+            box-shadow: 0 15px 35px rgba(66, 133, 244, 0.3);
+        }
+
+        .social-link:nth-child(4) {
+            background: linear-gradient(135deg, rgba(0, 119, 181, 0.2), rgba(0, 119, 181, 0.1));
+            border-color: rgba(0, 119, 181, 0.3);
+        }
+
+        .social-link:nth-child(4):hover {
+            background: linear-gradient(135deg, rgba(0, 119, 181, 0.4), rgba(0, 119, 181, 0.2));
+            border-color: rgba(0, 119, 181, 0.8);
+            box-shadow: 0 15px 35px rgba(0, 119, 181, 0.3);
+        }
+
+        .social-link::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.1), transparent);
+            transition: left 0.6s ease;
+        }
+
+        .social-link:hover::before {
+            left: 100%;
+        }
+
+        .social-link:hover {
+            transform: translateY(-8px) scale(1.05);
+        }
+
+        .social-icon {
+            font-size: 2rem;
+            margin-bottom: 5px;
+        }
+
+        .social-link span:last-child {
+            font-size: 0.9rem;
+            font-weight: 500;
+            letter-spacing: 0.5px;
+        }
+
         /* Navigation */
         nav {
             background: #111;
@@ -362,12 +464,112 @@
             color: #ccc;
         }
 
-        /* Footer */
-        footer {
-            background: #000;
-            padding: 40px 0;
+        /* References */
+        .references-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .reference-item {
+            background: #222;
+            padding: 25px;
+            border-radius: 15px;
+            transition: transform 0.3s ease;
+            border-left: 4px solid #666;
+        }
+
+        .reference-item:hover {
+            transform: translateY(-5px);
+            border-left-color: #fff;
+        }
+
+        .reference-header h3 {
+            font-size: 1.2rem;
+            margin-bottom: 5px;
+            color: #fff;
+        }
+
+        .reference-title {
+            color: #ccc;
+            font-size: 0.9rem;
+            margin-bottom: 15px;
+            font-style: italic;
+        }
+
+        .reference-contact {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .contact-detail {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            color: #ddd;
+            font-size: 0.9rem;
+        }
+
+        .contact-icon {
+            width: 20px;
             text-align: center;
-            border-top: 1px solid #333;
+        }
+
+        /* Enhanced Footer */
+        .footer-content {
+            text-align: center;
+        }
+
+        .footer-social {
+            display: flex;
+            justify-content: center;
+            gap: 25px;
+            margin-bottom: 30px;
+            flex-wrap: wrap;
+        }
+
+        .footer-link {
+            color: #888;
+            text-decoration: none;
+            padding: 12px 20px;
+            border-radius: 25px;
+            border: 1px solid #333;
+            transition: all 0.4s ease;
+            background: rgba(255,255,255,0.02);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .footer-link::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.05), transparent);
+            transition: left 0.5s ease;
+        }
+
+        .footer-link:hover::before {
+            left: 100%;
+        }
+
+        .footer-link:hover {
+            color: #fff;
+            border-color: #666;
+            background: rgba(255,255,255,0.08);
+            transform: translateY(-2px);
+        }
+
+        .footer-info {
+            color: #666;
+            margin-top: 20px;
+        }
+
+        .footer-info p {
+            margin: 5px 0;
         }
 
         /* Responsive */
@@ -380,6 +582,21 @@
                 flex-direction: column;
                 align-items: center;
                 gap: 15px;
+            }
+
+            .social-links {
+                gap: 15px;
+                margin-top: 30px;
+            }
+
+            .social-link {
+                padding: 15px;
+                font-size: 0.8rem;
+                min-width: 100px;
+            }
+
+            .social-icon {
+                font-size: 1.5rem;
             }
 
             .nav-container {
@@ -441,6 +658,25 @@
                         <span>ayrin21</span>
                     </div>
                 </div>
+                
+                <div class="social-links">
+                    <a href="https://github.com/ayrin21" target="_blank" class="social-link" title="GitHub Profile">
+                        <span class="social-icon">🐙</span>
+                        <span>GitHub</span>
+                    </a>
+                    <a href="https://kaggle.com/ayrin21" target="_blank" class="social-link" title="Kaggle Profile">
+                        <span class="social-icon">🏆</span>
+                        <span>Kaggle</span>
+                    </a>
+                    <a href="https://scholar.google.com/citations?user=ayrin21" target="_blank" class="social-link" title="Google Scholar">
+                        <span class="social-icon">🎓</span>
+                        <span>Scholar</span>
+                    </a>
+                    <a href="https://linkedin.com/in/ayrin21" target="_blank" class="social-link" title="LinkedIn Profile">
+                        <span class="social-icon">💼</span>
+                        <span>LinkedIn</span>
+                    </a>
+                </div>
             </div>
         </div>
     </header>
@@ -454,6 +690,7 @@
                 <a href="#skills" class="nav-link">Skills</a>
                 <a href="#research" class="nav-link">Research</a>
                 <a href="#projects" class="nav-link">Projects</a>
+                <a href="#references" class="nav-link">References</a>
             </div>
         </div>
     </nav>
@@ -713,10 +950,95 @@
         </div>
     </section>
 
+    <section id="references">
+        <div class="container">
+            <h2 class="section-title fade-in">References</h2>
+            <div class="references-grid">
+                <div class="reference-item fade-in">
+                    <div class="reference-header">
+                        <h3>Assistant Professor Abu Nowshed Chy</h3>
+                        <div class="reference-title">Assistant Professor</div>
+                    </div>
+                    <div class="reference-contact">
+                        <div class="contact-detail">
+                            <span class="contact-icon">📧</span>
+                            <span>nowshed@cu.ac.bd</span>
+                        </div>
+                        <div class="contact-detail">
+                            <span class="contact-icon">📱</span>
+                            <span>+8801764207358</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="reference-item fade-in">
+                    <div class="reference-header">
+                        <h3>Professor Dr. Kazi Ashrafuzzaman</h3>
+                        <div class="reference-title">Professor</div>
+                    </div>
+                    <div class="reference-contact">
+                        <div class="contact-detail">
+                            <span class="contact-icon">📧</span>
+                            <span>ashraf@cu.ac.bd</span>
+                        </div>
+                        <div class="contact-detail">
+                            <span class="contact-icon">📱</span>
+                            <span>+8801717124315</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="reference-item fade-in">
+                    <div class="reference-header">
+                        <h3>Professor Muhammad Anwarul Azim</h3>
+                        <div class="reference-title">Professor</div>
+                    </div>
+                    <div class="reference-contact">
+                        <div class="contact-detail">
+                            <span class="contact-icon">📧</span>
+                            <span>azim@cu.ac.bd</span>
+                        </div>
+                        <div class="contact-detail">
+                            <span class="contact-icon">📱</span>
+                            <span>+8801764207358</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="reference-item fade-in">
+                    <div class="reference-header">
+                        <h3>Professor Dr. Mohammad Khairul Islam</h3>
+                        <div class="reference-title">Professor</div>
+                    </div>
+                    <div class="reference-contact">
+                        <div class="contact-detail">
+                            <span class="contact-icon">📧</span>
+                            <span>mkislam@cu.ac.bd</span>
+                        </div>
+                        <div class="contact-detail">
+                            <span class="contact-icon">📱</span>
+                            <span>+8801919611867</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <footer>
         <div class="container">
-            <p>&copy; 2025 Fateha Jannat Ayrin. All rights reserved.</p>
-            <p>Passionate Educator & AI Researcher</p>
+            <div class="footer-content">
+                <div class="footer-social">
+                    <a href="https://github.com/ayrin21" target="_blank" class="footer-link">GitHub</a>
+                    <a href="https://kaggle.com/ayrin21" target="_blank" class="footer-link">Kaggle</a>
+                    <a href="https://scholar.google.com/citations?user=ayrin21" target="_blank" class="footer-link">Google Scholar</a>
+                    <a href="https://linkedin.com/in/ayrin21" target="_blank" class="footer-link">LinkedIn</a>
+                </div>
+                <div class="footer-info">
+                    <p>&copy; 2025 Fateha Jannat Ayrin. All rights reserved.</p>
+                    <p>Passionate Educator & AI Researcher</p>
+                </div>
+            </div>
         </div>
     </footer>
 
@@ -755,7 +1077,7 @@
         });
 
         // Add some interactive effects
-        document.querySelectorAll('.experience-item, .research-item, .project-item, .skill-category').forEach(item => {
+        document.querySelectorAll('.experience-item, .research-item, .project-item, .skill-category, .reference-item').forEach(item => {
             item.addEventListener('mouseenter', function() {
                 this.style.boxShadow = '0 10px 30px rgba(255,255,255,0.1)';
             });
